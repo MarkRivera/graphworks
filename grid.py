@@ -7,6 +7,8 @@ class Grid:
     self.maximum_squares = rows * columns
     self.default_value = 1
     self.grid = self.generate_grid()
+    self.start = []
+    self.end = []
     self.column_queue = deque([])
     self.row_queue = deque([])
 
@@ -59,7 +61,7 @@ class Grid:
     endNode = self.grid[end[0]][end[1]]
 
     # Start on first node
-    
+    self.breadthFirstGridSearch(0, 0)
 
     # Log each node I can touch to memory (only 4 coordinates N.S.E.W.)
 
@@ -68,6 +70,22 @@ class Grid:
   def breadthFirstGridSearch(self, start_row, start_column):
     row_queue = self.row_queue.append(start_row)
     column_queue = self.column_queue.append(start_column)
+
+  def addEnd(self, row, column):
+    self.grid[row][column] = 'E'
+    self.end = [row, column]
+
+  def removeEnd(self, row, column):
+    self.grid[row][column] = 1
+    self.end = []
+  
+  def addStart(self, row, column):
+    self.grid[row][column] = 'S'
+    self.start = [row, column]
+
+  def removeStart(self, row, column):
+    self.grid[row][column] = 1
+    self.start = []
 
 new_grid = Grid(10, 10)
 
