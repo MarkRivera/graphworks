@@ -58,7 +58,9 @@ g.addEdge(6, 2, 3);
 g.addEdge(7, 1, 4);
 
 Object.values(g.vertices).forEach(vert => {
-  console.log(vert.getConnections());
+  console.log(`The vert with a value of ${vert.value}`);
+  console.log(`is connected to these verts: `);
+  console.log(vert.connections);
 });
 
 export default Graph;
